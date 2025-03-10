@@ -1,0 +1,30 @@
+.container {
+    padding: 20px 15px;
+    width: 220px;
+    height: 250px;
+    background-color: #fff;
+    border: 3px dashed gray;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+.category {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    color: #FF5722;
+}
+
+.list {
+    list-style: none;
+    margin-top: 15px;
+    font-weight: 500;
+}
+
+li {
+    margin-top: 10px;
+}

@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    gap: 10px;
+}
+.SearchBox {
+    border: 3px dashed #FF5722;
+    padding: 10px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    width: 250px;
+}
+.SearchBox:hover {
+    outline: none;
+}
+.button {
+    width: 40px;
+    height: 40px;
+    border-radius: 25%;
+    -webkit-border-radius: 25%;
+    -moz-border-radius: 25%;
+    -ms-border-radius: 25%;
+    -o-border-radius: 25%;
+    background-color: #FF5722;
+    border: none;
+}
