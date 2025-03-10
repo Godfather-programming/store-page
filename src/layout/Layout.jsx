@@ -2,6 +2,7 @@ import { FaHeart } from "react-icons/fa"
 import { MdAddShoppingCart } from "react-icons/md"
 
 import styles from "./Layout.module.css"
+import { Link } from "react-router-dom"
 
 
 function Layout({children}) {
@@ -9,8 +10,8 @@ function Layout({children}) {
     <>
     <header> 
         <div className={`${styles.header} ${styles.common}`}>
-            <h1 className={styles.title}> Godfather shop </h1>
-            <span className={styles.icon}> <MdAddShoppingCart size="2rem" color="#FF5722"/> </span>
+            <h1 className={styles.title}> <Link to="/products"> Godfather shop </Link>  </h1>
+            <span className={styles.icon}> <Link to="/checkout"> <MdAddShoppingCart size="2rem" color="#FF5722"/> </Link>  </span>
         </div>
     </header>
 
