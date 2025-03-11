@@ -53,3 +53,30 @@
     -o-border-radius: 10px;
     text-align: center;
 }
+
+.amount {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-top: -10px;
+}
+
+.sign {
+    font-size: 1.5rem;
+    background-color: #FF5722;
+    color: #fff;
+    font-weight: bolder;
+    text-align: center;
+    width: 32px;
+    height: 32px;
+    line-height: 27px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.trash {
+    line-height: 36px;
+}

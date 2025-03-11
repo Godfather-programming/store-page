@@ -5,9 +5,9 @@ import styles from "./Product.module.css"
 
 
 function Prouduct() {
+
   return (
     <div>
-      <SeachBox />
       <ProductsCard />
     </div>
   )

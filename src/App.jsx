@@ -4,11 +4,14 @@ import Prouduct from "./pages/Prouduct"
 import Checkout from "./pages/Checkout"
 import Page404 from "./pages/page404"
 import ProductDetails from "./components/ProductDetails"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { api } from "./services/config"
 
 
 function App() {
-
+//   useEffect(() => {
+//     api.get("products").then(res => console.log(res)).catch(err => dispatch({type : "FAILED" , payload : err.message}))
+//  },[])
   return (
     <>
   <Layout>

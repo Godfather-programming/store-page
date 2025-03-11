@@ -8,6 +8,8 @@ import { shortenText } from "../utils/stringfunction"
 import Sidebar from "./Sidebar"
 import ProductDetails from "./ProductDetails"
 import Card from "./Card"
+import SeachBox from "./SeachBox"
+import Checkout from "../pages/Checkout"
 const initalState = {
     isLoading : true,
     data : [],
@@ -31,30 +33,145 @@ const reducer = (state, action) => {
 
 
 function ProductsCard() {
-const [corp, setCorp] = useState(null)
+const [show, setShow] = useState(false)
+
+const [searchParams, setSearchParams] = useSearchParams()
+ 
 
  const [condition, dispatch] = useReducer(reducer, initalState)
  useEffect(() => {
     api.get("products").then(res => dispatch({type : "SUCCESS", payload : res})).catch(err => dispatch({type : "FAILED" , payload : err.message}))
  },[])
   return (
+    <> 
+
+
+    <SeachBox condition={condition} dispatch={dispatch} setSearchParams={setSearchParams}/>
     <div className={styles.container}>
      {condition.isLoading && <div> <BallTriangle /> </div>}
 
 
      <div className={styles.cards}>{
-condition.data.map(product => <Card product={product}/>) 
+condition.data.map(product => <Card show={show} setShow={setShow} product={product}/>) 
         }</div>
 
 
     {!!condition.error && <div> {condition.error} </div>}    
 
-    <Sidebar condition={condition} dispatch={dispatch}/>
+    <Sidebar setSearchParams={setSearchParams}/>
  </div>
+ </>
   )
 }
 
 export default ProductsCard
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

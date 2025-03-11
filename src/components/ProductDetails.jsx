@@ -1,11 +1,13 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import styles from "./ProductDetail.module.css"
 
 import { ProductContext } from "./Card" 
 import { Link, NavLink } from "react-router-dom"
 
 function ProductDetails() {
-
+  
+ const res = useContext(ProductContext)
+ console.log(res)
   return (
     <div>
         <div>
