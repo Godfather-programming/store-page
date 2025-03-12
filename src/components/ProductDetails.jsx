@@ -14,7 +14,7 @@ function ProductDetails() {
             <img />
         </div>
         <div>
-            <h3>  </h3>
+            <h3> hi </h3>
             <p>  </p>
             <p>    </p>
             <div>
