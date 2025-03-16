@@ -27,4 +27,5 @@
 
 li {
     margin-top: 10px;
+    text-wrap: nowrap;
 }

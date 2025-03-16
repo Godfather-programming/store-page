@@ -1,0 +1,46 @@
+.container {
+   width: 22%;
+   border: 3px dashed #FF5722;
+   padding: 15px;
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   border-radius: 30px;
+   -webkit-border-radius: 30px;
+   -moz-border-radius: 30px;
+   -ms-border-radius: 30px;
+   -o-border-radius: 30px;
+   font-weight: 500;
+}
+
+.info {
+  margin-top: -10px;
+}
+
+.item {
+    margin-top: 20px;
+    display: flex;
+    gap: 5px;
+}
+
+.key {
+    color: #FF5722;
+}
+
+.value {
+    color: rgb(107, 106, 106);
+    margin-left: 5px;
+}
+
+.Checkout {
+    text-align: center;
+    color: #fff;
+    background-color: #FF5722;
+    margin-top: 20px;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+    padding: 5px;
+}

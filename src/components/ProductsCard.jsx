@@ -6,10 +6,12 @@ import { BallTriangle } from "react-loader-spinner"
 import { TbListDetails, TbShoppingBagCheck } from "react-icons/tb"
 import { shortenText } from "../utils/stringfunction"
 import Sidebar from "./Sidebar"
-import ProductDetails from "./ProductDetails"
+import ProductDetails from "../pages/ProductDetails"
 import Card from "./Card"
 import SeachBox from "./SeachBox"
 import Checkout from "../pages/Checkout"
+import { useProducts } from "../context/ProductsProvider"
+
 const initalState = {
     isLoading : true,
     data : [],
@@ -33,32 +35,39 @@ const reducer = (state, action) => {
 
 
 function ProductsCard() {
+   const products = useProducts()
+ console.log(products)
+
+ const [displayed, setDisplayed] = useState([])
+ 
+ useEffect(() => {
+    // api.get("products").then(res => dispatch({type : "SUCCESS", payload : res})).catch(err => dispatch({type : "FAILED" , payload : err.message}))
+    setDisplayed(products)
+ },[products])
+
 const [show, setShow] = useState(false)
 
 const [searchParams, setSearchParams] = useSearchParams()
  
 
  const [condition, dispatch] = useReducer(reducer, initalState)
- useEffect(() => {
-    api.get("products").then(res => dispatch({type : "SUCCESS", payload : res})).catch(err => dispatch({type : "FAILED" , payload : err.message}))
- },[])
   return (
     <> 
 
 
     <SeachBox condition={condition} dispatch={dispatch} setSearchParams={setSearchParams}/>
     <div className={styles.container}>
-     {condition.isLoading && <div> <BallTriangle /> </div>}
+     {!displayed.length && <div className={styles.loading}> <BallTriangle /> </div>}
 
 
      <div className={styles.cards}>{
-condition.data.map(product => <Card show={show} setShow={setShow} product={product}/>) 
+displayed.map(product => <Card key={product.id} show={show} setShow={setShow} product={product}/>) 
         }</div>
 
 
     {!!condition.error && <div> {condition.error} </div>}    
 
-    <Sidebar setSearchParams={setSearchParams}/>
+    <Sidebar setSearchParams={setSearchParams} condition={condition} dispatch={dispatch}/>
  </div>
  </>
   )

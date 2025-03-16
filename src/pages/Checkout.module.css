@@ -1,3 +1,4 @@
 .container {
-    color: red;
+    display: flex;
+    gap: 5%;
 }

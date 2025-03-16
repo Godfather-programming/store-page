@@ -5,28 +5,26 @@ import { useSearchParams } from "react-router-dom"
 
 
 
-function Sidebar({setSearchParams}) {
+function Sidebar({condition, dispatch, setSearchParams}) {
 
-  // const [searchParams, setSearchParams] = useSearchParams()
-
-//  const {data} = condition
+ const {data} = condition
   const clickHandler = (e) => {
-    
+    const {tagName} = e.target
 
-  //   console.log(e.target.innerText.toLowerCase())
-  //   const type = e.target.innerText.toLowerCase()
-  //   let newData = data.filter(item => item.category === type)
-  //   newData = data
-  //   if(type === "all") {
-  //     dispatch({type : "SUCCESS", payload : data})
-  //   } else {
-  //     dispatch({ type : "SUCCESS", payload : data})
-  //   }
-  //   console.log(newData)
 
-  //   console.log(newData)
-  console.log(e.target.innerText.toLowerCase())
-  const type = e.target.innerText.toLowerCase()
+    if(tagName !== "LI") return
+
+    console.log(e.target.innerText.toLowerCase())
+    const type = e.target.innerText.toLowerCase()
+    const newData = data.filter(item => item.category === type)
+
+    if(type === "all") {
+      dispatch({type : "SUCCESS", payload : data})
+    } else {
+      dispatch({ type : "SUCCESS", payload : newData})
+    }
+    console.log(newData)
+  
   if( type === "all" ) {
     setSearchParams({})
   } else {

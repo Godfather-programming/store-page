@@ -3,6 +3,7 @@ import styles from "./SearchBox.module.css"
 import { useSearchParams } from "react-router-dom"
 import { useState } from "react"
 import { shortenText } from "../utils/stringfunction"
+import { useProducts } from "../context/ProductsProvider"
 
 
 function SeachBox({condition, dispatch, setSearchParams}) {
@@ -13,8 +14,8 @@ function SeachBox({condition, dispatch, setSearchParams}) {
 
   // const [searchParams, setSearchParams] = useSearchParams()
 
-  const clickHandler = () => {
-    // newData = data
+  const searchHandler = () => {
+
     let newData = data.filter(item => shortenText(item.title).toLowerCase().includes(text))
     if(!text) {
       dispatch({type : "SUCCESS", payload : data})
@@ -33,8 +34,8 @@ function SeachBox({condition, dispatch, setSearchParams}) {
   console.log(text)
   return (
    <div className={styles.container}>
- <input className={styles.SearchBox} type="text" placeholder="Search..." value={text} onChange={e => setText(e.target.value)}/>
- <button className={styles.button} onClick={clickHandler}> <IoSearchSharp color="#fff" size="1.5rem"/> </button>
+ <input className={styles.SearchBox} type="text" placeholder="Search..." value={text} onChange={e => setText(e.target.value.toLowerCase().trim())}/>
+ <button className={styles.button} onClick={searchHandler}> <IoSearchSharp color="#fff" size="1.5rem"/> </button>
     </div>
   )
 }
