@@ -1,10 +1,8 @@
 import { createContext, useEffect, useReducer, useState } from "react"
 import styles from "./ProductCard.module.css"
-import { api } from "../services/config"
-import { data, Link, useSearchParams } from "react-router-dom"
+import { useSearchParams } from "react-router-dom"
 import { BallTriangle } from "react-loader-spinner"
-import { TbListDetails, TbShoppingBagCheck } from "react-icons/tb"
-import { shortenText } from "../utils/stringfunction"
+import { filterProducts, getInitialQuery, searchProducts, shortenText } from "../utils/stringfunction"
 import Sidebar from "./Sidebar"
 import ProductDetails from "../pages/ProductDetails"
 import Card from "./Card"
@@ -39,15 +37,28 @@ function ProductsCard() {
  console.log(products)
 
  const [displayed, setDisplayed] = useState([])
+ const [query, setQuery] = useState({})
+ const [search, setSearch] = useState("")
+
+ const [searchParams, setSearchParams] = useSearchParams()
  
  useEffect(() => {
-    // api.get("products").then(res => dispatch({type : "SUCCESS", payload : res})).catch(err => dispatch({type : "FAILED" , payload : err.message}))
     setDisplayed(products)
- },[products])
+
+   setQuery(getInitialQuery(searchParams || ""))
+   
+  },[products])
+
+ useEffect(() => {
+    setSearchParams(query)
+    setSearch(query.search || "")
+    let finalProducts = searchProducts(products, query.search)
+    finalProducts = filterProducts(finalProducts, query.category)
+    setDisplayed(finalProducts)
+ }, [query])
 
 const [show, setShow] = useState(false)
 
-const [searchParams, setSearchParams] = useSearchParams()
  
 
  const [condition, dispatch] = useReducer(reducer, initalState)
@@ -55,7 +66,7 @@ const [searchParams, setSearchParams] = useSearchParams()
     <> 
 
 
-    <SeachBox condition={condition} dispatch={dispatch} setSearchParams={setSearchParams}/>
+    <SeachBox search={search} setSearch={setSearch} condition={condition} dispatch={dispatch} setSearchParams={setSearchParams} query={query} setQuery={setQuery}/>
     <div className={styles.container}>
      {!displayed.length && <div className={styles.loading}> <BallTriangle /> </div>}
 
@@ -67,7 +78,7 @@ displayed.map(product => <Card key={product.id} show={show} setShow={setShow} pr
 
     {!!condition.error && <div> {condition.error} </div>}    
 
-    <Sidebar setSearchParams={setSearchParams} condition={condition} dispatch={dispatch}/>
+    <Sidebar setSearchParams={setSearchParams} condition={condition} dispatch={dispatch} query={query} setQuery={setQuery}/>
  </div>
  </>
   )

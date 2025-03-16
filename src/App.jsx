@@ -7,6 +7,7 @@ import ProductDetails from "./pages/ProductDetails"
 import { useEffect, useState } from "react"
 import { api } from "./services/config"
 import ProductsProvider from "./context/ProductsProvider"
+import CartProvider from "./context/CartProvider"
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
   return (
     <>
   <Layout>
+  <CartProvider> 
   <ProductsProvider> 
   <Routes>
     <Route path="/products" element={<Prouduct />} />  
@@ -25,6 +27,7 @@ function App() {
     <Route path="/*" element={<Page404 />}/>  
    </Routes>
   </ProductsProvider>
+  </CartProvider>  
   </Layout>
     </>
   )

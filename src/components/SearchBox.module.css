@@ -12,7 +12,7 @@
     -o-border-radius: 10px;
     width: 250px;
 }
-.SearchBox:hover {
+.SearchBox:focus {
     outline: none;
 }
 .button {

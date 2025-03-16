@@ -6,6 +6,7 @@ import { shortenText } from "../utils/stringfunction";
 import { Link } from "react-router-dom";
 import { TbListDetails, TbShoppingBagCheck } from "react-icons/tb";
 import { LuTrash } from "react-icons/lu";
+import { useCart } from "../context/CartProvider";
 
 export const ProductContext = createContext();
 function Card({product, show, setShow}) {
@@ -14,6 +15,8 @@ function Card({product, show, setShow}) {
  const [buy, setBuy] = useState(false)
  const [number, setNumber] = useState(1)
 
+  const [state , dispatch] = useCart()
+  
 
 const clickHandler = () => {
  setShow(true)
@@ -21,6 +24,7 @@ const clickHandler = () => {
 
  const buyHandler = () => {
     setBuy(true)
+    dispatch({type: "ADD", payload: product})
  }
    
    return (
