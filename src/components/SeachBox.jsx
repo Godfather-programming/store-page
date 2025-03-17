@@ -6,9 +6,7 @@ import { finalQuery, shortenText } from "../utils/stringfunction"
 import { useProducts } from "../context/ProductsProvider"
 
 
-function SeachBox({search, setSearch,condition, dispatch, setSearchParams, query, setQuery}) {
-  console.log(condition.data)
-  const {data} = condition
+function SeachBox({search, setSearch, setSearchParams, query, setQuery}) {
   // console.log(data)
  
 

@@ -7,7 +7,7 @@ import { categories } from "../constant/list"
 
 
 
-function Sidebar({condition, dispatch, setSearchParams, query, setQuery}) {
+function Sidebar({ setSearchParams, query, setQuery}) {
 
 //  const {data} = condition
   const categoryHandler = (e) => {

@@ -16,9 +16,9 @@ function App() {
 //  },[])
   return (
     <>
-  <Layout>
   <CartProvider> 
   <ProductsProvider> 
+  <Layout>
   <Routes>
     <Route path="/products" element={<Prouduct />} />  
     <Route path="/products/:id" element={<ProductDetails />} />
@@ -26,9 +26,9 @@ function App() {
     <Route path="/checkout" element={<Checkout />}/>
     <Route path="/*" element={<Page404 />}/>  
    </Routes>
+  </Layout>
   </ProductsProvider>
   </CartProvider>  
-  </Layout>
     </>
   )
 }

@@ -10,26 +10,26 @@ import SeachBox from "./SeachBox"
 import Checkout from "../pages/Checkout"
 import { useProducts } from "../context/ProductsProvider"
 
-const initalState = {
-    isLoading : true,
-    data : [],
-    error : ""
-}
+// const initalState = {
+//     isLoading : true,
+//     data : [],
+//     error : ""
+// }
 
-const reducer = (state, action) => {
-    console.log({state, action})
-    switch (action.type) {
-        case "SUCCESS":
-        return { ... state, isLoading : false, data : action.payload }     
-        break;
-        case "FAILED" : 
-        return { ... state, isLoading : false, error : action.payload }
-        break;  
-        default:
-        throw new Error("invalid action") 
-            break;
-    }
-}
+// const reducer = (state, action) => {
+//     console.log({state, action})
+//     switch (action.type) {
+//         case "SUCCESS":
+//         return { ... state, isLoading : false, data : action.payload }     
+//         break;
+//         case "FAILED" : 
+//         return { ... state, isLoading : false, error : action.payload }
+//         break;  
+//         default:
+//         throw new Error("invalid action") 
+//             break;
+//     }
+// }
 
 
 function ProductsCard() {
@@ -61,12 +61,12 @@ const [show, setShow] = useState(false)
 
  
 
- const [condition, dispatch] = useReducer(reducer, initalState)
+//  const [condition, dispatch] = useReducer(reducer, initalState)
   return (
     <> 
 
 
-    <SeachBox search={search} setSearch={setSearch} condition={condition} dispatch={dispatch} setSearchParams={setSearchParams} query={query} setQuery={setQuery}/>
+    <SeachBox search={search} setSearch={setSearch} setSearchParams={setSearchParams} query={query} setQuery={setQuery}/>
     <div className={styles.container}>
      {!displayed.length && <div className={styles.loading}> <BallTriangle /> </div>}
 
@@ -76,9 +76,9 @@ displayed.map(product => <Card key={product.id} show={show} setShow={setShow} pr
         }</div>
 
 
-    {!!condition.error && <div> {condition.error} </div>}    
+    {!!displayed.error && <div> {condition.error} </div>}    
 
-    <Sidebar setSearchParams={setSearchParams} condition={condition} dispatch={dispatch} query={query} setQuery={setQuery}/>
+    <Sidebar setSearchParams={setSearchParams}  query={query} setQuery={setQuery}/>
  </div>
  </>
   )

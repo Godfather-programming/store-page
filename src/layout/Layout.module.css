@@ -39,11 +39,13 @@
 }
 
 .content {
-    /* width: 50px;
-    height: 50px; */
-    position: relative;
-    top: -90px;
-    left: 18px;
+    width: 20px;
+    height: 20px;
+    font-size: 0.9rem;
+    line-height: 20px;
+    position: absolute;
+    top: 15px;
+    right: 155px;
     padding: 2px;
     font-weight: bold;
     background-color: #000;
