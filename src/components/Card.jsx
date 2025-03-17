@@ -13,7 +13,6 @@ function Card({product, show, setShow}) {
     const {category, description, id, image, price, rating, title} = product
    
  const [buy, setBuy] = useState(false)
- const [number, setNumber] = useState(1)
 
   const [state , dispatch] = useCart()
   
