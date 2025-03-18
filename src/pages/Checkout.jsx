@@ -1,6 +1,4 @@
-import { useContext } from "react"
 import styles from "./Checkout.module.css"
-import { ProductContext } from "../components/Card"
 import Situation from "../components/Situation"
 import PurchasedProducts from "../components/PurchasedProducts"
 

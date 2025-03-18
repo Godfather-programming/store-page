@@ -21,6 +21,7 @@
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
+    position: relative;
 }
 
 .footer {
@@ -41,11 +42,11 @@
 .content {
     width: 20px;
     height: 20px;
-    font-size: 1rem;
+    font-size: 0.9rem;
     line-height: 20px;
     position: absolute;
-    top: 15px;
-    right: 155px;
+    top: -10px;
+    right: -8px;
     padding: 2px;
     font-weight: bold;
     background-color: #000;

@@ -100,3 +100,11 @@
     top: -6px;
     font-weight: 500;
 }
+
+.loading {
+    width: 100%;
+    text-align: center;
+    height: 1000px;
+    margin-top: 200px;
+    margin-left: 530px;
+  }

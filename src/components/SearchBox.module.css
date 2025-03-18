@@ -2,6 +2,7 @@
     display: flex;
     gap: 10px;
 }
+
 .SearchBox {
     border: 3px dashed #FF5722;
     padding: 10px;
@@ -12,9 +13,11 @@
     -o-border-radius: 10px;
     width: 250px;
 }
+
 .SearchBox:focus {
     outline: none;
 }
+
 .button {
     width: 40px;
     height: 40px;

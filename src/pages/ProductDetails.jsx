@@ -1,38 +1,33 @@
-import { useContext, useEffect, useState } from "react"
 import styles from "./ProductDetail.module.css"
 
-import { ProductContext } from "../components/Card" 
-import { Link, NavLink } from "react-router-dom"
-import { api } from "../services/config"
-import { shortenText } from "../utils/stringfunction"
-import { TbPinnedFilled } from "react-icons/tb"
-import { PiMapPinPlusFill } from "react-icons/pi"
+import { Link, useParams } from "react-router-dom"
 import { BiLeftArrowAlt } from "react-icons/bi"
+import { useProductDetails } from "../context/ProductsProvider"
+import { BallTriangle } from "react-loader-spinner"
+import { SiOpenproject } from "react-icons/si"
+import { IoMdPricetag } from "react-icons/io"
 
 function ProductDetails() {
-    const [product, setProduct] = useState([]) 
-    useEffect(() => {
-        api.get("products/3").then(res => setProduct(res))
-    }, [])
-    const {category, description, id, image, price, rating, title} = product
-    console.log(product)
 
-  
-//  const res = useContext(ProductContext)
-//  console.log(res)
+    const { id } = useParams() 
+
+    const productDetails = useProductDetails(+id)
+    
   return (
-    <div className={styles.container}>
+    <>  
+    {!productDetails ? <div className={styles.loading}> <BallTriangle /> </div> : 
+      <div className={styles.container}>
         <div className={styles.imgWrapper}>
-            <img className={styles.img} src={product.image} alt={product.title}/>
+            <img className={styles.img} src={productDetails.image} alt={productDetails.title}/>
         </div>
         <div className={styles.detailes}>
-            <h3 className={styles.title}> {product.title} </h3>
-           <div className={styles.discriptionWrapper}> <p className={styles.description}> {product.description} </p> </div>
-            <div className={`${styles.category} ${styles.arrange1}`}> <TbPinnedFilled fontSize="1.5rem" color="#FF5722"/>  {product.category} </div>
+            <h3 className={styles.title}> {productDetails.title} </h3>
+           <div className={styles.discriptionWrapper}> <p className={styles.description}> {productDetails.description} </p> </div>
+            <div className={`${styles.category} ${styles.arrange1}`}> <SiOpenproject fontSize="1.5rem" color="#FF5722"/>  {productDetails.category} </div>
             <div>
                 <div className={`${styles.wrapper} ${styles.price}`}>
                 <div className={styles.category}>
-                <PiMapPinPlusFill fontSize="1.5rem" color="#FF5722"/> {product.price} $
+                <IoMdPricetag fontSize="1.5rem" color="#FF5722"/> {productDetails.price} $
                 </div>
                 <div className={styles.return}>
                 <Link className={styles.link} to="/products"> <span> <BiLeftArrowAlt fontSize="1.5rem"/> </span> <span className={styles.text}> Back to Shop </span> </Link>
@@ -42,6 +37,8 @@ function ProductDetails() {
             </div>
         </div>
     </div>
+}
+    </>
   )
 }
 
