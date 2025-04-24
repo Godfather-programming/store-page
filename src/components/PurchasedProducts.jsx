@@ -7,10 +7,6 @@ import { MdDeleteOutline } from "react-icons/md"
 
 
 function PurchasedProducts() {
-   const [buyProducts, setBuyProducts] = useState([])
-   useEffect(() => {
-    api.get("products/1").then(res => setBuyProducts(res))
-   }, [])
 
    const [state , dispatch] = useCart()
 
