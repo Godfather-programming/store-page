@@ -12,11 +12,10 @@ function Sidebar({ query, setQuery}) {
 
     if(tagName !== "LI") return
     
-    console.log(e.target.innerText.toLowerCase())
     const category = e.target.innerText.toLowerCase()
 
     setQuery(query => finalQuery(query, { category }))
-
+    console.log(category)  
   }
 
 
