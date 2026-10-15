@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom"
-import Layout from "./layout/layout"
+import Layout from "./layout/Layout"
 import Prouduct from "./pages/Prouduct"
 import Checkout from "./pages/Checkout"
 import Page404 from "./pages/page404"
