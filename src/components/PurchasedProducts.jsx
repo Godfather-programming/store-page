@@ -9,11 +9,12 @@ import { decrease, increase, removeItem, selectorCart } from "../features/cart/c
 
 function PurchasedProducts() {
 
-   const [state , dispatch] = useCart()
+  //  const [state , dispatch] = useCart()
 
 
    const stateCart = useSelector(selectorCart)
    const dispatch = useDispatch()
+   console.log(dispatch);
   //  const [state , dispatch] = useCart()
 
 
