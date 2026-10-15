@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer } from "react"
-import { sumProducts } from "../utils/stringfunction"
+// import { sumProducts } from "../utils/stringfunction"
 
 const initialState = {
   selectedItems: [],

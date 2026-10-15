@@ -4,15 +4,15 @@ import Prouduct from "./pages/Prouduct"
 import Checkout from "./pages/Checkout"
 import Page404 from "./pages/page404"
 import ProductDetails from "./pages/ProductDetails"
-import ProductsProvider from "./context/ProductsProvider"
-import CartProvider from "./context/CartProvider"
+// import ProductsProvider from "./context/ProductsProvider"
+// import CartProvider from "./context/CartProvider"
 
 
 function App() {
   return (
     <>
-  <CartProvider> 
-  <ProductsProvider> 
+  {/* <CartProvider> 
+  <ProductsProvider>  */}
   <Layout>
   <Routes>
     <Route path="/products" element={<Prouduct />} />  
@@ -22,8 +22,8 @@ function App() {
     <Route path="/*" element={<Page404 />}/>  
    </Routes>
   </Layout>
-  </ProductsProvider>
-  </CartProvider>  
+  {/* </ProductsProvider>
+  </CartProvider>   */}
     </>
   )
 }

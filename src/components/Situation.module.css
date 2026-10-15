@@ -45,3 +45,10 @@
     -o-border-radius: 25px;
     padding: 5px;
 }
+
+
+@media (max-width: 768px) {
+    .container {
+             width: 200px;
+    }
+}

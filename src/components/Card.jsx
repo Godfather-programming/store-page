@@ -5,25 +5,34 @@ import ProductDetails from "../pages/ProductDetails";
 import { productQuantity, shortenText } from "../utils/stringfunction";
 import { Link } from "react-router-dom";
 import { TbListDetails, TbShoppingBagCheck } from "react-icons/tb";
-import { useCart } from "../context/CartProvider";
 import { MdDeleteOutline } from "react-icons/md";
+
+import { useDispatch, useSelector } from "react-redux";
+import store from "../app/store";
+import { addItem, decrease, increase, removeItem, selectorCart } from "../features/cart/cartSlice";
 
 export const ProductContext = createContext();
 function Card({product, show, setShow}) {
     const { id, image, price, title} = product
-   
-  const [state , dispatch] = useCart()
-  const quantity = productQuantity(state, id)
 
+//   const [state , dispatch] = useCart()
+
+   const stateCart = useSelector(selectorCart)
+  //  console.log(state)
+   const dispatchs = useDispatch()
+  const quantity = productQuantity(stateCart, id)
+  
   const clickHandler = () => {
      setShow(true)
    }
 
-const actionHandler = (type) => {
-   dispatch({type, payload: product})
-}
+// const actionHandler = (type) => {
+//    dispatch({type, payload: product})
+// }
 
+// console.log(cart)
    
+// onClick={() => actionHandler("REMOVE_ITEM")}
    return (
        <div key={id} className={styles.card}>
      {show && <ProductContext.Provider value={product}> <ProductDetails /> </ProductContext.Provider> }
@@ -35,14 +44,14 @@ const actionHandler = (type) => {
     <div>
 
     {
-         quantity === 1 && ( <button onClick={() => actionHandler("REMOVE_ITEM")}> <MdDeleteOutline /> </button> )
+         quantity === 1 && ( <button onClick={() => dispatchs(removeItem(product))}> <MdDeleteOutline /> </button> )
     }
     {
-         quantity > 1 && ( <button onClick={() => actionHandler("DECREASE")}> - </button> )
+         quantity > 1 && ( <button onClick={() => dispatchs(decrease(product))}> - </button> )
     }
     { !!quantity && <span> {quantity} </span> }
       {
-         quantity === 0 ? (  <button onClick={() => actionHandler("ADD_ITEM")}> <TbShoppingBagCheck /> </button> ) : (  <button onClick={() => actionHandler("INCREASE")}> + </button> )
+         quantity === 0 ? (  <button onClick={() => dispatchs(addItem(product))}> <TbShoppingBagCheck /> </button> ) : (  <button onClick={() => dispatchs(increase(product))}> + </button> )
       }
     </div>
 

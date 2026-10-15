@@ -2,17 +2,26 @@ import styles from "./ProductDetail.module.css"
 
 import { Link, useParams } from "react-router-dom"
 import { BiLeftArrowAlt } from "react-icons/bi"
-import { useProductDetails } from "../context/ProductsProvider"
+// import { useProductDetails } from "../context/ProductsProvider"
 import { BallTriangle } from "react-loader-spinner"
 import { SiOpenproject } from "react-icons/si"
 import { IoMdPricetag } from "react-icons/io"
+import { useDispatch, useSelector } from "react-redux"
+import { useEffect } from "react"
+import { fectchProducts } from "../features/product/productSlice"
 
 function ProductDetails() {
 
     const { id } = useParams() 
 
-    const productDetails = useProductDetails(+id)
-    
+     const dispatch = useDispatch()
+     
+     useEffect(() => {
+      dispatch(fectchProducts())
+     }, [])
+
+    const productDetails = useSelector(store => store.product.products.find(i => i.id === +id))
+
   return (
     <>  
     {!productDetails ? <div className={styles.loading}> <BallTriangle /> </div> : 

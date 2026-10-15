@@ -39,10 +39,17 @@ const shortenText = (text) => {
         return queryLoad
  }
 
- const sumProducts = products => {
-  const itemsCounter = products.reduce((counter, product) => counter + product.quantity, 0)
-  const total = products.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)
-  return { itemsCounter, total }
+//  const sumProducts = products => {
+ 
+//   return { itemsCounter, total }
+//  }
+
+ const sumQuantity = products => {
+  return products.reduce((counter, product) => counter + product.quantity, 0)
+ }
+
+ const sumPrice = products => {
+  return products.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)
  }
 
  const productQuantity = (state, id) => {
@@ -54,4 +61,4 @@ const shortenText = (text) => {
   }
  }
  
- export {shortenText , searchProducts, filterProducts, finalQuery, getInitialQuery, sumProducts, productQuantity}
+ export {shortenText , searchProducts, filterProducts, finalQuery, getInitialQuery, sumQuantity, sumPrice, productQuantity}
